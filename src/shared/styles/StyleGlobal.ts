@@ -7,4 +7,8 @@ export const StyleGlobal = createGlobalStyle`
     box-sizing: border-box;
     /* overflow-x: hidden; */
   };
+
+  img {
+    flex-shrink: 1;
+  }
 `;

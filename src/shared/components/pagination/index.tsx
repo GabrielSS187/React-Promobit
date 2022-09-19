@@ -1,5 +1,9 @@
-import ReactPaginate from "react-paginate";
-import { Container_Styles } from "./styes";
+import { useLottieCustom } from "../../hooks/useLottieCustom";import ReactPaginate from "react-paginate";
+
+import nextAnimation from "../../assets/animations/nextAnimation.json";
+import previousAnimation from "../../assets/animations/previousAnimation.json";
+
+import { Ul_Styles } from "./styes";
 
 interface PaginationProps {
   setCurrentPage: (input: number) => void;
@@ -7,12 +11,25 @@ interface PaginationProps {
 
 export function Pagination ({setCurrentPage}: PaginationProps) {
   const MAX_PAGES = 500;
+  
+    const style = {
+      height: 30,
+      marginTop: -25,
+      color:"red",
+    }
+
+    const next = useLottieCustom(nextAnimation, style);
+    const previous = useLottieCustom(previousAnimation, style);
 
   return (
-       <Container_Styles>
+       <Ul_Styles>
             <ReactPaginate
-              previousLabel="⏪"
-              nextLabel="⏩"
+              previousLabel={<div onClick={() => previous.goToAndPlay(1, true)}>
+                                {previous.View}
+                             </div>}
+              nextLabel={<div onClick={() => next.goToAndPlay(1, true)}>
+                            {next.View}
+                         </div>}
               breakLabel="..."
               breakClassName="break-me"
               pageCount={MAX_PAGES}
@@ -24,6 +41,6 @@ export function Pagination ({setCurrentPage}: PaginationProps) {
               containerClassName="pagination"
               activeClassName="active"
             />
-        </Container_Styles>
+        </Ul_Styles>
   );
 };

@@ -1,12 +1,19 @@
 import styled from "styled-components";
 
-export const Container_Styles = styled.ul`
+export const Ul_Styles = styled.ul`
   .pagination {
     display: flex;
     flex-direction: row;
     color: #3b36d1;
     list-style-type: none;
     padding: 10px;
+
+    > li div {
+
+      height: 30;
+      margin-top: -25px;
+     
+    }
 
     > li {
       border-radius: 10px;

@@ -6,10 +6,15 @@ import { useQuery } from "react-query";
 
 import { Pagination } from "../../shared/components/pagination";
 import { GenreList } from "../../shared/components/genreList";
+import { Header } from "../../shared/components/header";
+import { CardMovie } from "../../shared/components/cardMovie";
 
 import { IMovies } from "../../shared/services/movies/types";
 
-import { Container_Styles } from "./styles";
+import { 
+  ContainerListMovies_Styles, 
+  Ul_Styles,
+ } from "./styles";
 
 export function Movies () {
   const [ currentPage, setCurrentPage ] = useState<number>(1);
@@ -41,35 +46,45 @@ export function Movies () {
   };
   
   return (
-    <Container_Styles>
-        <GenreList 
-          setGenreId={setGenreId}
-        />
+    <>
+        <div>
+            <Header />
+            <GenreList 
+              genreId={genreId}
+              setGenreId={setGenreId}
+            />
+        </div>
 
         <br />
 
-        <ul>
-          {
-            filterGenres!.length ? 
-              filterGenres?.map((movie: IMovies) => {
-                return(
-                  <li key={movie.id} 
-                      onClick={() => navigate(`/details/${movie.id}`)}
-                  >
-                    {movie?.original_title}
-                  </li>
-                )
-              })
-            :
-              (<h2>Nada encontrado!</h2>)
-          }
-        </ul>
+        <ContainerListMovies_Styles id="movies">
+            <Ul_Styles>
+              {
+                filterGenres!.length ? 
+                  filterGenres?.map((movie: IMovies) => {
+                    return(
+                      <li key={movie.id} 
+                          onClick={() => navigate(`/details/${movie.id}`)}
+                      >
+                        <CardMovie 
+                          tittle={movie.title}
+                          imgUrl={movie.poster_path!}
+                          date={new Date(movie.release_date)}
+                        />
+                      </li>
+                    )
+                  })
+                :
+                  (<h2>Nada encontrado!</h2>)
+              }
+            </Ul_Styles>
 
-        <br />
+            <br /><br />
 
-        <Pagination 
-          setCurrentPage={setCurrentPage}
-        />
-    </Container_Styles>
+            <Pagination 
+              setCurrentPage={setCurrentPage}
+            />
+        </ContainerListMovies_Styles>
+    </>
   );
 };

@@ -1,12 +1,21 @@
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 
 import { apis } from "../../services/movies/apiMovies";
 
+import { 
+  Button_Styles, 
+  Container_Styles, 
+  Ul_Styles,
+  Header_Styles
+} from "./styles";
+
 interface GenreListProps {
+  genreId: string;
   setGenreId: (genre: string) => void;
 };
 
-export function GenreList ({ setGenreId }: GenreListProps) {
+export function GenreList ({ setGenreId, genreId }: GenreListProps) {
   const { data, isLoading, isError } = useQuery("genres", apis.getGenres);
 
   if ( isLoading ) {
@@ -22,23 +31,37 @@ export function GenreList ({ setGenreId }: GenreListProps) {
   };
 
   return (
-    <>
-      <button onClick={() => setGenreId("")}>
-        Todos os filmes
-      </button>
-      <ul>
+    <Container_Styles>
+      <Header_Styles>
+        <h1>
+          Milhões de filmes, séries e pessoas para
+          descobrir. Explore já.
+        </h1>
+        <h4>FILTRE POR:</h4>
+      </Header_Styles>
+
+      <Ul_Styles>
+          <Button_Styles 
+            className={genreId === "" ? "isActive" : ""}
+            onClick={() => setGenreId("")}
+          >
+            Todos os filmes
+          </Button_Styles>
         {
           data?.genres.map((genre) => {
             return (
               <li key={genre.id}>
-                <button onClick={() => setGenreId(String(genre.id))}>
-                  {genre.name}
-                </button>
+                <Button_Styles  
+                    className={genreId === String(genre.id) ? "isActive" : ""}
+                    onClick={() => setGenreId(String(genre.id))}
+                  >
+                  <a href="#movies">{genre.name}</a>
+                </Button_Styles>
               </li>
             )
           })
         }
-      </ul>
-    </>
+      </Ul_Styles>
+    </Container_Styles>
   );
 }; 
