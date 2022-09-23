@@ -41,10 +41,12 @@ export function MovieDetails () {
   if ( movieDetails.isLoading ) {
     return <Load />
   };
-
+  
   if ( movieDetails.isError ) {
     return <h2>Algo deu errado!.</h2>;
   };
+  
+  
 
   const getYearDate = 
   movieDetails.data?.release_date?.split("-")[0];

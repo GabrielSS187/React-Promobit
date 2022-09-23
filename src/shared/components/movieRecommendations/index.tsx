@@ -68,8 +68,8 @@ export function MovieRecommendations ({ idMovie }:
     };
 
     const clickRecommendation = useCallback((id: number) => {
-      window.location.replace(`/details/${id}`);
-    }, [idMovie]);
+      self.location.replace(`/details/${id}`);
+    }, []);
     
   return (
     <Container_Styles>
