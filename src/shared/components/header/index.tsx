@@ -1,4 +1,4 @@
-import tmdbImage from "D:/Repositorios Remotos/React-Promobit/src/shared/assets/imgs/Vector@2x.png"
+import tmdbImage from "../../assets/imgs/Vector@2x.png"
 
 import { Header_Styles, Img_Styles } from "./styles"
 
