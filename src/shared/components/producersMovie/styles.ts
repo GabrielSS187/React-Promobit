@@ -4,60 +4,91 @@ interface IProps {
   numberProducers: number;
 };
 
-export const Container_Styles = styled.div`
-    width: 90%;
-    color: #FFFFFF;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding-top: 20px;
+export const Container_Styles_Responsive = styled.div<IProps>`
+ margin-top: 25px;
 
-    @media (min-width: 1000px) {
-      width: 100%;
-    }
+ > ul div {
+  display: flex;
+  justify-content: ${({numberProducers}: IProps) => numberProducers < 3 ? "flex-start" : "none"};
+ }
 `;
 
-export const Card_Styles = styled.div<IProps>`
-  width:  
-  ${({numberProducers}: IProps) => numberProducers > 3 ? "150px" : "90px" };
+export const Card_Styles_Responsive = styled.li<IProps>`
+  width: 100px;
+  height: 175px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  cursor: 
+  ${({numberProducers}: IProps) => numberProducers > 3 ? "grab" : "auto"};
+  
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: ${({numberProducers}: IProps) => numberProducers > 3 ? "center" : "start" };
-  padding-bottom: 10px;
-  
-  img {
-    width: ${({numberProducers}: IProps) => numberProducers > 3 ? "100%" : "80%" };
+  align-items: center;
+  gap: 3px;
+
+  text-align: center;
+
+  > img {
+    width: 100%;
+    height: 120px;
+    flex-shrink: 1;
   }
 
-  h4 {
+  > h4 {
+    font-size: clamp(.800rem, 2vw, .850rem);
     font-weight: 700;
-    font-size: clamp(1rem, 3.5vw, 1.5rem);
-    padding-top: 8px;
+    padding: 2px 1px 0 1px;
   }
 
-  h5 {
+  > h5 {
+    font-size: clamp(.650rem, 1vw, .750rem);
     font-weight: 400;
-    font-size: clamp(.8rem, 3.2vw, 1.2rem);
-    line-height: 20px;
   }
 
-  @media (min-width: 1000px) {
-    width: ${({numberProducers}: IProps) => numberProducers > 3 ? "35%" : "15%" };
-    align-items: ${({numberProducers}: IProps) => numberProducers > 3 ? "center" : "flex-start" };
+  border: 2px solid;
+`;
 
-    img {
-      width: ${({numberProducers}: IProps) => numberProducers > 3 ? "100%" : "65%" };
-    }
+export const Container_Styles_Fixe = styled.div`
+  margin-top: 5px;
 
-      h4 {
-        font-size: clamp(.900rem, 1.5vw, 1.2rem);
-      }
+  > ul div {
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 6px;
+  }
+`;
 
-      h5 {
-        font-size: clamp(.500rem, 1.5vw, .700rem);
-      }
+export const Card_Styles_Fixe = styled.li<IProps>`
+  height: 175px;
+  width: 90px;
+  background-color: #FFFF;
+  border-radius: 5px;
+  padding-bottom: 4px;
+  cursor: 
+  ${({numberProducers}: IProps) => numberProducers > 3 ? "grab" : "auto"};
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 4px; */
+  text-align: center;
+
+  > img {
+    height: 110px;
+    width: 100%;
+    flex-shrink: 1;
+  }
+
+  > h4 {
+    font-size: clamp(.800rem, 2vw, .850rem);
+    font-weight: 700;
+    padding: 3px 1px 0 1px;
+  }
+
+  > h5 {
+    font-size: clamp(.650rem, 1vw, .750rem);
+    font-weight: 400;
   }
 `;

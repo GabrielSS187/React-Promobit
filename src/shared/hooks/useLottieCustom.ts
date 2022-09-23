@@ -1,10 +1,15 @@
 import { LottieComponentProps, useLottie } from "lottie-react";
 
-export function useLottieCustom (animation: any, style: React.CSSProperties) {
+type Play = {
+  autoplay: boolean,
+  loop: boolean,
+}
+
+export function useLottieCustom (animation: any, style: React.CSSProperties, play?: Play) {
   const options: LottieComponentProps  = {
     animationData: animation,
-    autoplay: false,
-    loop: false,  
+    autoplay: play?.autoplay ? play.autoplay : false,
+    loop: play?.loop ? play.loop : false,  
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
@@ -13,4 +18,4 @@ export function useLottieCustom (animation: any, style: React.CSSProperties) {
   const lottieObj = useLottie(options, style);
 
   return { ...lottieObj };
-}
+};

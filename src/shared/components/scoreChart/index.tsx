@@ -9,6 +9,7 @@ interface ScoreChartProps {
 
 export function ScoreChart ({ voteAverage }: ScoreChartProps) {
     let percentage = (voteAverage / 100) * 10;
+
   return (
     <Container_Styles>
       <div>

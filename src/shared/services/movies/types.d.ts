@@ -18,7 +18,7 @@ export interface IMovies {
   status: string;
 };
 
-export interface IObjModelOutput {
+export interface IObjModelOutputData {
   page: number; 
   results: IMovies[]; 
   total_pages: number; 
@@ -85,4 +85,20 @@ export interface ICreditsMovie {
   id: number;
   cast: ICast[];
   crew: ICrew[];
+};
+
+export interface IVideoMovie {
+  id: number;
+  results: [{
+    iso_639_1: string;
+    iso_3166_1: string;
+    name: string;
+    key: string;
+    site: string;
+    size: number;
+    type: string;
+    official: boolean;
+    published_at: string;
+    id: string;
+  }]
 };

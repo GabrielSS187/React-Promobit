@@ -34,6 +34,7 @@ export function MovieInfo ({
   producers,
   isLoading
 }: MovieInfoProps) {
+  
   return (
     <Container_Styles>
           <div className="info-1">

@@ -6,9 +6,11 @@ import { apis } from "../../shared/services/movies/apiMovies";
 import { Header } from "../../shared/components/header";
 import { MovieImg } from "../../shared/components/movieImg";
 import { MovieInfo } from "../../shared/components/movieInfo";
-import { ProducersMovie } from "../../shared/components/producersMovie";
-import { ScoreChart } from "../../shared/components/scoreChart";
-import { SynopsisMovie } from "../../shared/components/synopsisMovie";
+import { MovieVideo } from "../../shared/components/movieVideo";
+import { MovieActors } from "../../shared/components/movieActors";
+import { MovieRecommendations } from "../../shared/components/movieRecommendations";
+
+import { Load } from "../../shared/components/load";
 
 import { formatDate } from "../../shared/utils/formatDate";
 
@@ -16,33 +18,39 @@ import {
   Container_Styles,
   Container_Information_Styles,
  } from "./styles";
-import { useEffect, useState } from "react";
+
 
 export function MovieDetails () {
   const { id } = useParams();
 
   const movieDetails =
-   useQuery("details", () => apis.getMovie(Number(id)));
-
+   useQuery("details", () => apis.getMovie(Number(id)), {
+    refetchOnWindowFocus: false,
+   });
+   
   const releaseDate = 
-  useQuery("release_date", () => apis.getReleaseDate(Number(id)));
-
+   useQuery("release_date", () => apis.getReleaseDate(Number(id)), {
+    refetchOnWindowFocus: false,
+  });
+  
   const creditsMovie = 
-  useQuery("credits", () => apis.getCredits(Number(id)));
+  useQuery("credits", () => apis.getCredits(Number(id)), {
+    refetchOnWindowFocus: false,
+  });
 
-  if ( movieDetails.isLoading || creditsMovie.isLoading ) {
-    return <h2>Carr ......</h2>
+  if ( movieDetails.isLoading ) {
+    return <Load />
   };
 
   if ( movieDetails.isError ) {
-    return <h2>Algo deu errado!.</h2>
+    return <h2>Algo deu errado!.</h2>;
   };
 
   const getYearDate = 
   movieDetails.data?.release_date?.split("-")[0];
 
   const fullDateBR = 
-  formatDate(new Date(movieDetails?.data?.release_date!) ,"short");
+  formatDate(new Date(movieDetails?.data?.release_date!), "short");
 
   const findReleaseDateActualMovie = 
   releaseDate.data?.results?.find((iso) => iso.iso_3166_1 === "BR");
@@ -64,7 +72,7 @@ export function MovieDetails () {
 
   return (
     <Container_Styles>
-        <div>
+        <div className="section-1">
             <Header />
             <Container_Information_Styles>
                     <MovieImg
@@ -86,6 +94,21 @@ export function MovieDetails () {
                         isLoading={creditsMovie.isLoading}
                       />
             </Container_Information_Styles>
+        </div>
+        
+        <div className="section-2">
+            <MovieActors 
+              actorsList={movieCast} 
+              isLoading={creditsMovie.isLoading}
+            />
+
+            <MovieVideo
+              idMovie={Number(id)}
+            />
+
+            <MovieRecommendations 
+              idMovie={Number(id)}
+            />
         </div>
     </Container_Styles>
   );

@@ -16,10 +16,12 @@ interface GenreListProps {
 };
 
 export function GenreList ({ setGenreId, genreId }: GenreListProps) {
-  const { data, isLoading, isError } = useQuery("genres", apis.getGenres);
+  const { data, isLoading, isError } = useQuery("genres", apis.getGenres, {
+    refetchOnWindowFocus: false,
+  });
 
   if ( isLoading ) {
-    return <h2>Carr ......</h2>
+    return <h2>Carregando ......</h2>
   };
 
   if ( isError ) {

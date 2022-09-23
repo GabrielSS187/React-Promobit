@@ -3,10 +3,14 @@ import styled from "styled-components";
 
 export const Container_Styles = styled.main`
 /* overflow: hidden; */
- > div {
+ > .section-1 {
     width: 100%;
     background-color: #2D0C5E;
   };
+
+  > .section-2 {
+    
+  }
 `;
 
 export const Container_Information_Styles = styled.div`

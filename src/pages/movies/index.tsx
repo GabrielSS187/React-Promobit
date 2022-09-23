@@ -9,6 +9,8 @@ import { GenreList } from "../../shared/components/genreList";
 import { Header } from "../../shared/components/header";
 import { CardMovie } from "../../shared/components/cardMovie";
 
+import { Load } from "../../shared/components/load";
+
 import { IMovies } from "../../shared/services/movies/types";
 
 import { 
@@ -20,8 +22,13 @@ export function Movies () {
   const [ currentPage, setCurrentPage ] = useState<number>(1);
   const [ genreId, setGenreId ] = useState<string>("");
 
+  const MINUTES_30= 30000 * 60;
+
   const { data, isLoading, isError, refetch } = 
-  useQuery("movies", () => apis.getMovies(currentPage));
+  useQuery("movies", () => apis.getMovies(currentPage), {
+    refetchOnWindowFocus: false,
+    staleTime: MINUTES_30,
+  });
 
   useEffect(() => {
    refetch(); 
@@ -34,7 +41,7 @@ export function Movies () {
   }) : data?.results;
 
   if ( isLoading ) {
-    return <h2>Carr ......</h2>
+    return <Load />
   };
 
   if ( isError ) {

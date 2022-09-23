@@ -8,6 +8,10 @@ export const StyleGlobal = createGlobalStyle`
     /* overflow-x: hidden; */
   };
 
+  ul, ol {
+    list-style: none;
+  }
+
   img {
     flex-shrink: 1;
   }
