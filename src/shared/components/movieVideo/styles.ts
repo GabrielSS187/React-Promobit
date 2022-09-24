@@ -11,7 +11,7 @@ export const Container_Styles = styled.div`
     font-size: 35px;
   }
 
-  > div {
+  > div, img {
     height: min(95vw, 450px);
     width: min(95vw, 700px);
   }

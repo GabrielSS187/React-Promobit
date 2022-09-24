@@ -3,7 +3,7 @@ import { LottieComponentProps, useLottie } from "lottie-react";
 type Play = {
   autoplay: boolean,
   loop: boolean,
-}
+};
 
 export function useLottieCustom (animation: any, style: React.CSSProperties, play?: Play) {
   const options: LottieComponentProps  = {
