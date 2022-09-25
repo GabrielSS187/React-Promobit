@@ -56,7 +56,7 @@ Pré-requisitos: npm / yarn
 https://github.com/GabrielSS187/React-Tmdb-Gss.git
 
 # entrar na pasta do projeto front end web
-cd frontend
+cd React-Tmdb-Gss
 
 # instalar dependências
 npm install
