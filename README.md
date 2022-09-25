@@ -9,17 +9,20 @@
 
 ### Link: [React-Tmdb-Gss](https://react-tmdb-gss-ap1n.vercel.app/)
 
-``React-Tmdb-Gss`` é uma aplicação front-end web construida para pesquisas e consultas de diversos filmes.
+``React-Tmdb-Gss`` é uma aplicação front-end web construida para pesquisas, consultas e filtros de diversos filmes.
 
-A aplicação consiste em pesquisas, consultas e filtrar por os filmes mais relevantes do momento. 
-Com um design facíl, animado e responsivo para melhor experiência do usuário.
+A aplicação consiste em pesquisas, consultas e filtrar por os filmes mais relevantes do momento que são puxados da api de filmes
+da [tmdb](https://www.themoviedb.org/), api especializada em filmes. 
+O projeto do site possui um design facíl, animado e responsivo para melhor experiência do usuário.
 
 
 ## Layout Desktop. Com demostração
-https://user-images.githubusercontent.com/86306877/188762796-5e3caf58-7d3a-4f7d-ace9-fdfd89710946.mp4
+https://user-images.githubusercontent.com/86306877/192158553-ca017318-fa0f-4979-bcf6-072b20d49d91.mp4
 
 ## Layout Mobile. Com demostração
-https://user-images.githubusercontent.com/86306877/188762971-b224f732-2426-4915-899d-142626aa093f.mp4
+https://user-images.githubusercontent.com/86306877/192158652-869bf92f-2e76-4a21-b30e-f806f9d7dceb.mp4
+
+
 
 ## Competências
 - Responsividade
@@ -45,6 +48,9 @@ https://user-images.githubusercontent.com/86306877/188762971-b224f732-2426-4915-
 ## Implantação em produção
 
 - Front end web: Vercel
+
+## Inspiração
+- https://github.com/Promobit/front-end-challenge
 
 # Como executar o projeto
 
