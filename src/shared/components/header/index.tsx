@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import { useLottieCustom } from "../../hooks/useLottieCustom";
 
 import { Link } from "react-router-dom";
@@ -10,8 +11,9 @@ import { Header_Styles, Img_Styles } from "./styles"
 
 export function Header () {
 
-  const pathDetails = window.location.pathname;
-  const pathDetailsIsValid = pathDetails.includes("details");
+  const { pathname } = useLocation();
+  const pathDetailsIsValid = pathname.includes("details");
+  console.log(pathname)
 
   const play = {
     autoplay: true,
@@ -22,7 +24,6 @@ export function Header () {
     height: "75px",
     width: "100%",
   };
-
 
   const { View } = useLottieCustom(goBackAnimation, styles, play);
 

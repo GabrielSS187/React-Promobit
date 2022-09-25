@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { useQuery } from "react-query";
@@ -9,6 +10,8 @@ import { MovieInfo } from "../../shared/components/movieInfo";
 import { MovieVideo } from "../../shared/components/movieVideo";
 import { MovieActors } from "../../shared/components/movieActors";
 import { MovieRecommendations } from "../../shared/components/movieRecommendations";
+
+import { motion } from "framer-motion";
 
 import { Load } from "../../shared/components/load";
 
@@ -22,6 +25,10 @@ import {
 
 export function MovieDetails () {
   const { id } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const movieDetails =
    useQuery("details", () => apis.getMovie(Number(id)), {
@@ -39,7 +46,7 @@ export function MovieDetails () {
   });
 
   if ( movieDetails.isLoading ) {
-    return <Load />
+    return <Load />;
   };
   
   if ( movieDetails.isError ) {
@@ -73,45 +80,52 @@ export function MovieDetails () {
   const movieCast = creditsMovie.data?.cast;
 
   return (
-    <Container_Styles>
-        <div className="section-1">
-            <Header />
-            <Container_Information_Styles>
-                    <MovieImg
-                      title={movieDetails.data?.title!}
-                      img={`https://image.tmdb.org/t/p/original/${movieDetails.data?.poster_path}`}
-                    />  
-
-                      <MovieInfo
+    <motion.div
+      initial={{ scaleY: 0 }}
+      animate={{ scaleY: 1 }}
+      exit={{ scaleY: 0 }}
+      transition={{duration: .5}}
+    >
+        <Container_Styles>
+          <div className="section-1">
+              <Header />
+              <Container_Information_Styles>
+                      <MovieImg
                         title={movieDetails.data?.title!}
-                        year={getYearDate!}
-                        ageGroup={certification?.certification!}
-                        date={fullDateBR}
-                        genres={movieDetails.data?.genres!}
-                        hoursMovie={hoursMovie}
-                        minutesMovie={minutesMovie}
-                        voteAverage={movieDetails.data?.vote_average!}
-                        overview={movieDetails.data?.overview!}
-                        producers={producersSectors || []}
-                        isLoading={creditsMovie.isLoading}
-                      />
-            </Container_Information_Styles>
-        </div>
-        
-        <div className="section-2">
-            <MovieActors 
-              actorsList={movieCast} 
-              isLoading={creditsMovie.isLoading}
-            />
+                        img={`https://image.tmdb.org/t/p/original/${movieDetails.data?.poster_path}`}
+                      />  
 
-            <MovieVideo
-              idMovie={Number(id)}
-            />
+                        <MovieInfo
+                          title={movieDetails.data?.title!}
+                          year={getYearDate!}
+                          ageGroup={certification?.certification!}
+                          date={fullDateBR}
+                          genres={movieDetails.data?.genres!}
+                          hoursMovie={hoursMovie}
+                          minutesMovie={minutesMovie}
+                          voteAverage={movieDetails.data?.vote_average!}
+                          overview={movieDetails.data?.overview!}
+                          producers={producersSectors || []}
+                          isLoading={creditsMovie.isLoading}
+                        />
+              </Container_Information_Styles>
+          </div>
+          
+          <div className="section-2">
+              <MovieActors 
+                actorsList={movieCast} 
+                isLoading={creditsMovie.isLoading}
+              />
 
-            <MovieRecommendations 
-              idMovie={Number(id)}
-            />
-        </div>
-    </Container_Styles>
+              <MovieVideo
+                idMovie={Number(id)}
+              />
+
+              <MovieRecommendations 
+                idMovie={Number(id)}
+              />
+          </div>
+        </Container_Styles>
+    </motion.div>
   );
 };

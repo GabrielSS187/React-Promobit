@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { apis } from "../../shared/services/movies/apiMovies";
 import { useQuery } from "react-query";
 
+import { motion } from "framer-motion";
+
 import { Pagination } from "../../shared/components/pagination";
 import { GenreList } from "../../shared/components/genreList";
 import { Header } from "../../shared/components/header";
@@ -22,16 +24,17 @@ export function Movies () {
   const [ currentPage, setCurrentPage ] = useState<number>(1);
   const [ genreId, setGenreId ] = useState<string>("");
 
-  const MINUTES_30= 30000 * 60;
+  const MINUTES_5 = 5000 * 60;
 
   const { data, isLoading, isError, refetch } = 
   useQuery("movies", () => apis.getMovies(currentPage), {
     refetchOnWindowFocus: false,
-    staleTime: MINUTES_30,
+    staleTime: MINUTES_5,
   });
 
   useEffect(() => {
-   refetch(); 
+   refetch();
+  //  window.scrollTo(0, 0); 
   }, [currentPage]);
 
   const navigate = useNavigate();
@@ -41,7 +44,7 @@ export function Movies () {
   }) : data?.results;
 
   if ( isLoading ) {
-    return <Load />
+    return <Load />;
   };
 
   if ( isError ) {
@@ -53,7 +56,18 @@ export function Movies () {
   };
   
   return (
-    <>
+    <motion.div
+      initial={{ scaleX: 0 }}
+      animate={{ scaleX: 1 }}
+      exit={{ scaleX: 0 }}
+      transition={{
+        type: "spring",
+        duration: .5,
+        damping: 5,
+        mass: .2,
+        stiffness: 150,
+       }}
+    >
         <div>
             <Header />
             <GenreList 
@@ -92,6 +106,6 @@ export function Movies () {
               setCurrentPage={setCurrentPage}
             />
         </ContainerListMovies_Styles>
-    </>
+    </motion.div>
   );
 };
