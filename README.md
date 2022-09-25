@@ -7,7 +7,7 @@
 
 # Sobre o projeto
 
-### Link: [Class-Management-System](https://class-management-system.surge.sh/)
+### Link: [React-Tmdb-Gss](https://react-tmdb-gss-ap1n.vercel.app/)
 
 ``React-Tmdb-Gss`` é uma aplicação front-end web construida para pesquisas e consultas de diversos filmes.
 
