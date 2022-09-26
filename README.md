@@ -19,7 +19,7 @@ O projeto do site possui um design facíl, animado e responsivo para melhor expe
 ## Layout Desktop. Com demostração
 https://user-images.githubusercontent.com/86306877/192158553-ca017318-fa0f-4979-bcf6-072b20d49d91.mp4
 
-## Layout Mobile. Com demostração
+## Layout Mobile e Tablet. Com demostração
 https://user-images.githubusercontent.com/86306877/192158652-869bf92f-2e76-4a21-b30e-f806f9d7dceb.mp4
 
 
