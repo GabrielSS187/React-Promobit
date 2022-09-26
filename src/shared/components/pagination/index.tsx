@@ -1,4 +1,5 @@
-import { useLottieCustom } from "../../hooks/useLottieCustom";import ReactPaginate from "react-paginate";
+import { useLottieCustom } from "../../hooks/useLottieCustom";
+import ReactPaginate from "react-paginate";
 
 import nextAnimation from "../../assets/animations/nextAnimation.json";
 import previousAnimation from "../../assets/animations/previousAnimation.json";

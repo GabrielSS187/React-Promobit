@@ -13,7 +13,6 @@ export function Header () {
 
   const { pathname } = useLocation();
   const pathDetailsIsValid = pathname.includes("details");
-  console.log(pathname)
 
   const play = {
     autoplay: true,

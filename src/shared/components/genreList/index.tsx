@@ -1,5 +1,4 @@
 import { useQuery } from "react-query";
-import { Link } from "react-router-dom";
 
 import { apis } from "../../services/movies/apiMovies";
 
