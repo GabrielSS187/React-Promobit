@@ -32,7 +32,7 @@ https://user-images.githubusercontent.com/86306877/192158652-869bf92f-2e76-4a21-
 
 ## Front end
 - HTML / CSS / JS / TypeScript
-- ReactJS/TS
+- React JS/TS
 - Vite
 - Framer-Motion
 - Styled-Components
