@@ -59,7 +59,7 @@ Pré-requisitos: npm / yarn
 
 ```bash
 # clonar repositório
-https://github.com/GabrielSS187/React-Tmdb-Gss.git
+git clone https://github.com/GabrielSS187/React-Tmdb-Gss.git
 
 # entrar na pasta do projeto front end web
 cd React-Tmdb-Gss
